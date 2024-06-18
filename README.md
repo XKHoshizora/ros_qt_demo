@@ -14,16 +14,9 @@
 ros_qt_demo
 ├── CMakeLists.txt
 ├── include
-│   ├── ros_qt_demo
-│   │   ├── main_window.hpp
-│   │   ├── qnode.hpp
-│   └── ros_qt_demo_msgs
-│       ├── msg
-│       │   └── msg1.msg
-│       └── srv
-│           └── srv1.srv
-├── launch
-│   └── demo.launch
+│   └── ros_qt_demo
+│       ├── main_window.hpp
+│       └── qnode.hpp
 ├── mainpage.dox
 ├── package.xml
 ├── resources
@@ -34,10 +27,8 @@ ros_qt_demo
 │   ├── main_window.cpp
 │   ├── main.cpp
 │   └── qnode.cpp
-├── ui
-│   └── main_window.ui
-└── urdf
-    └── my_robot.urdf
+└── ui
+    └── main_window.ui
 ```
 
 ## 下载此功能包
@@ -72,10 +63,46 @@ cd ~/catkin_ws
 catkin_make
 ```
 
+## 刷新终端
+
+在终端中输入以下命令进行刷新：
+
+```bash
+source ./devel/setup.bash
+```
+
 ## 运行功能包
 
 在终端中输入以下命令进行运行：
 
 ```bash
-    roslaunch ros_qt_demo demo.launch
+rosrun ros_qt_demo ros_qt_demo
 ```
+
+## 测试
+
+打开一个新的终端，输入以下命令打开 ROS Master：
+
+```bash
+roscore
+```
+
+在刚刚的图形界面中找到 `Use environment variables` 选项并打勾，再点击下面的 `Connect` 按钮，点击即可创建一个发布节点。
+
+再次打开一个新的终端，输入以下命令查看发布中的话题：
+
+```bash
+rostopic list
+```
+
+可以看到一个名为 `/chatter` 的话题。
+
+在该终端中输入以下命令，可查看发布中的消息：
+
+```bash
+rostopic echo /chatter
+```
+
+## 参考
+
+[ROS Qt5 librviz 人机交互界面开发一（配置 QT 环境）](https://blog.csdn.net/qq_38441692/article/details/105158790)
